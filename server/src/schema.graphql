@@ -1,0 +1,42 @@
+type Query {
+  getName: String!
+}
+
+type Mutation {
+  signup(
+    email: String!
+    password: String!
+    name: String!
+    restaurants: String
+  ): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  remove(email: String!, password: String!): User
+  get_restaurant(id: String!): Restaurant
+  add_to_user(email: String!, id: String!): User
+  add_restaurant(id: String!, image: String!, name: String!, address: String!, city: String!, state: String!, zip: String!, rating: String!): Restaurant
+}
+
+type Restaurant {
+  id: ID!
+  image: String!
+  name: String!
+  address: String!
+  city: String!
+  state: String!
+  zip: String!
+  rating: String!
+}
+
+type AuthPayload {
+  token: String
+  user: User
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  restaurants: String!
+}
+
+scalar DateTime
